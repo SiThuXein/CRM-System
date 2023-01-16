@@ -1,0 +1,129 @@
+body{
+    background: #f6f7f2;
+}
+/* Register */
+
+#register_select{
+    width:30%;
+    margin-left: 3%;
+}
+#register_gender{
+    margin-left: 3%;
+}
+
+/* Admin Login */
+
+#container{
+    margin-top: 6%;
+    padding: 5% 0 5% 0;
+}
+
+#loginError{
+    width:300px;
+}
+
+/* Admin Register */
+
+#admin_register{
+    margin-top : 1%;
+    padding: 3% 0 3% 0;
+}
+#admin_register form select{
+    width: 270px;
+    height: 35px;
+    margin:0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+ #option{
+    color:grey;
+}
+
+/* Admin Dashboard */
+#dashboard{
+    margin-left: 15%;
+    color:#fff;
+}
+#profile{
+    margin-left:30%;
+}
+
+.admin_dashboard .col{
+    background: rgb(255, 254, 254);
+    margin-right: 20px;
+}
+.admin_dashboard .image{
+    width:100px;
+    height: 100px;
+    margin-right: 50px;
+}
+.admin_dashboard .col .div1{
+    float:left;
+}
+.admin_dashboard .col .div2{
+    float:left;
+}
+/* .admin_dashboard .col .div2 .text2{
+   color:rgb(243, 243, 14) !important;
+} */
+.admin_dashboard .col .div2 .text{
+    padding-top: 20px;
+    text-align:center;
+    font-weight: bold;
+}
+
+/* footer */
+
+.footer{
+    height:40px;
+    position:fixed;
+    bottom: 0;
+}
+.footer h5{
+    color:#fff;
+    text-align:center;
+    font-size: 1rem;
+    padding-top: 10px;
+}
+
+/* customer */
+
+/* .customer table td{
+    padding:0 0 0 22px;
+} */
+.customer table .row_1{
+    border:1px solid #ccc;
+}
+.customer table .row_1 th{
+    border:1px solid #ccc;
+}
+
+/* Detail */
+.detail_2 .div1 td a{
+    color:#000;
+}
+.detail_2 .div2{
+    padding:20px 0 20px 0;
+}
+.detail_2 .div2 h5{
+    margin-left: 20px;
+}
+
+    /* Pipeline */
+
+.pipeline form select{
+    width:200px;
+    height:35px;
+    border:1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Activities Detail */
+
+.activities_detail .col1{
+    margin-left: 40px;
+}
+.activities_detail .col2{
+    margin-left: 40px;
+}
+
