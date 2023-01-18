@@ -20,7 +20,10 @@
             Reports
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="/admin/dashboard/activities/report">Activities Report</a></li>
+            <li><a class="dropdown-item" href="/admin/dashboard/product/report">Product Sold Report</a></li>
+            <li><a class="dropdown-item" href="/admin/dashboard/summary/activities">Summary Activities Report</a></li>
+            <li><a class="dropdown-item" href="/admin/dashboard/summary/product/sold">Summary Product Sold Report</a></li>
           </ul>
         </li>
     

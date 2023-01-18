@@ -16,7 +16,7 @@
                     </div>
                     <div class="col-md-4 text-center">
                         <div>
-                            <a href="/admin/dashboard/customer/pending"><button class="btn btn-sm btn-info">Back</button></a>
+                            <a href="/admin/dashboard/activities"><button class="btn btn-sm btn-info">Back</button></a>
                             <a href="/admin/dashboard/assign"><button class="btn btn-sm btn-primary">Reassign</button></a>
                         </div>
                     </div>

@@ -14,6 +14,10 @@ use App\Http\Controllers\admin\TeamListController;
 use App\Http\Controllers\admin\EditUserController;
 use App\Http\Controllers\admin\ComplainController;
 use App\Http\Controllers\admin\AssignController;
+use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\admin\ProductReportController;
+use App\Http\Controllers\admin\SummaryProductSoldController;
+use App\Http\Controllers\admin\SummaryActivitiesController;
 
 
 // Route::get('/', function () {
@@ -44,7 +48,13 @@ Route::get('/admin/dashboard/activities',[ActivitiesController::class,'activitie
 Route::post('/admin/dashboard/activities',[ActivitiesController::class,'search']);
 Route::get('/admin/dashboard/activities/detail/{id}',[ActivitiesController::class,'activities_detail']);
 Route::post('/admin/dashboard/activities/detail/close/{id}',[ActivitiesController::class,'close_account']);
-
+Route::get('/admin/dashboard/activities/report',[ReportController::class,'activities_report']);
+Route::post('/admin/dashboard/activities/report',[ReportController::class,'search']);
+Route::get('/admin/dashboard/product/report',[ProductReportController::class,'product_report']);
+Route::post('/admin/dashboard/product/report',[ProductReportController::class,'search_report']);
+Route::get('/admin/dashboard/summary/product/sold',[SummaryProductSoldController::class,'summary_product_sold']);
+Route::get('/admin/dashboard/summary/activities',[SummaryActivitiesController::class,'summary_activities']);   
+Route::post('/admin/dashboard/summary/activities',[SummaryActivitiesController::class,'search_summary_activities']);   
 
 // Route::group(['prefix'=>'admin','namespace'=>'admin','middleware'=>'auth'],function(){
 

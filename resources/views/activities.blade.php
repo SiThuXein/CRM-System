@@ -38,7 +38,7 @@
                                 </select>
                             </div>
                            <div class="col-md-4">
-                               <select name="status" id="" class="text-center">
+                               <select name="status"class="text-center">
                                    <option value="" active class="text-secondary">Choose status</option>
                                    <option value="Pending">Pending</option>
                                    <option value="Closed">Closed</option>

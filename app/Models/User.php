@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Customer;
 use App\Models\Assign;
+use App\Models\Product;
 
 class User extends Authenticatable
 {
@@ -54,6 +55,14 @@ class User extends Authenticatable
     // }
     public function assign(){
         return $this->hasMany(Assign::class);
+    }
+
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
+
+    public function customer(){
+        return $this->hasMany(Customer::class);
     }
 
 }

@@ -24,24 +24,57 @@ class ActivitiesController extends Controller
         $date = request()->date;
         
         $asg = Assign::all();
-        foreach($asg as $a){
-            if($a->user->username == $sale_person){
-            if($a->customer->status == $status){
-                if($a->assign_date == $date){
+        if(isset($sale_person) && !isset($status) && !isset($date)){
+            foreach($asg as $a){
+                $username = $a->user->username;
+                if($username == $sale_person){
                     $customer = Customer::all();
                     $user = User::all();
-                    $assign = Assign::where("id",$a->id)->paginate(7);
-
+                    $assign = Assign::where("user_id",$a->user->id)->paginate(7);
                     return view("activities",compact(["assign","customer","user"]));
-                    }
                 }
-            
-            
-            else{
-                return redirect()->back()->with("not_found","Result Not Found");
+                else{
+                    return redirect()->back()->with("not_found","Result Not Found");
+                }
             }
-        }   
         }
+        else if(isset($sale_person) && isset($status) && !isset($date)){
+            foreach($asg as $a){
+                if($a->user->username == $sale_person){
+                    if($a->customer->status == $status){
+                            $customer = Customer::all();
+                            $user = User::all();
+                            $assign = Assign::where("user_id",$a->user->id)->paginate(7);
+                            return view("activities",compact(["assign","customer","user"]));
+                        }
+                }
+                else{
+                    return redirect()->back()->with("not_found","Result Not Found");
+                }   
+            }
+        }
+        else if(isset($sale_person) && isset($status) && isset($date)){
+            foreach($asg as $a){
+                if($a->user->username == $sale_person){
+                    if($a->customer->status == $status){
+                        if($a->assign_date == $date){
+                            $customer = Customer::all();
+                            $user = User::all();
+                            $assign = Assign::where("user_id",$a->user->id)->where("customer_id",$a->customer->id)->paginate(7);
+
+                            return view("activities",compact(["assign","customer","user"]));
+                            }
+                        }
+                }
+                else{
+                    return redirect()->back()->with("not_found","Result Not Found");
+                }   
+            }
+        }
+        else{
+            return redirect()->back()->with("not_found","Result Not Found");
+        }
+     
 
     }
 
