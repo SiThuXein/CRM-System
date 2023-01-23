@@ -28,19 +28,17 @@
                        <div class="row">
                            <div class="col-md-1"></div>
                             <div class="col-md-2">
-                                <label for="" class="fw-bold fs-6">Start Date</label>
+                                <label for="" class="fw-bold fs-6">Date</label>
                                 <input type="date"  name="start_date" class="form-control">
-                           </div>
-                           <div class="col-md-2">
-                                <label for="" class="fw-bold fs-6">End Date</label>
-                                <input type="date"  name="end_date" class="form-control">
                            </div>
                            <div class="col-md-2">
                                <label for="" class="fw-bold fs-6">Sale Person</label><br>
                                <select name="sale_person" id="" class="text-center">
                                    <option value="" active>All</option>
-                                        <option value="" ></option>
-                                </select>
+                                   @foreach($user as $u)
+                                        <option value="{{ $u->id }}" >{{ $u->username }}</option>
+                                    @endforeach
+                                    </select>
                             </div>
                          
                             <div class="col-md-2"></div>    
@@ -77,12 +75,17 @@
                 <tr>
                     <td>{{ $u->username }}</td>
                 </tr>
+                @foreach($u->product as $p)
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $p->product_name }}</td>                     
+                           
+
+                @endforeach
+                <td>{{ count($u->product) }}</td>
                        </tr>
-                    @endforeach
+
+                @endforeach
                        </table>
         </div>
         <div class="col-md-1"></div>

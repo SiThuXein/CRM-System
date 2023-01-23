@@ -30,7 +30,8 @@ class UserRegisterController extends Controller
           "branch" => $branch,
         ]);
 
-        $user->assignRole($role);
+        $role = $user->assignRole($role);
+        $role->givePermissionTo('edit info');
 
         return redirect("/admin");
     }

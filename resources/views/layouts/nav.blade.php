@@ -24,6 +24,7 @@
             <li><a class="dropdown-item" href="/admin/dashboard/product/report">Product Sold Report</a></li>
             <li><a class="dropdown-item" href="/admin/dashboard/summary/activities">Summary Activities Report</a></li>
             <li><a class="dropdown-item" href="/admin/dashboard/summary/product/sold">Summary Product Sold Report</a></li>
+            <li><a class="dropdown-item" href="/admin/dashboard/complain">Complain</a></li>
           </ul>
         </li>
     

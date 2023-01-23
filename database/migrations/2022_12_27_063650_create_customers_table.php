@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string("occupation");
             $table->string("address");
             $table->string("status");
+            $table->string("start_date");
             $table->timestamps();
         });
     }

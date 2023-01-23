@@ -28,7 +28,8 @@ class DatabaseSeeder extends Seeder
         //     "role" => "sale manager"
         // ]);
 
-        $this->call(RoleSeeder::class);
+        // $this->call(RoleSeeder::class);
         // $this->call(UserSeeder::class);
+        $this->call(PermissionSeeder::class);
     }
 }

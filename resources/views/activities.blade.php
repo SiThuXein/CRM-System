@@ -33,7 +33,7 @@
                                <select name="sale_person" id="" class="text-center">
                                    <option value="" active class="text-secondary">Choose sale person</option>
                                    @foreach($user as $u)
-                                        <option value="{{ $u->username }}">{{ $u->username }}</option>
+                                        <option value="{{ $u->id }}">{{ $u->username }}</option>
                                     @endforeach
                                 </select>
                             </div>

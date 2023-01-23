@@ -1,38 +1,35 @@
 @extends("layouts.master")
 @extends("layouts.nav")
-@section("title","Pipeline")
+@section("title","Activities")
 @include("layouts.footer")
 
 @section("content")
 
+@if(session("not_found"))
+<div class="containers">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="alert alert-warning">{{ session("not_found") }}</div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+@endif
 <div class="container-fluid pipeline bg-white" >
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-4 mt-3">
-            <h5 class="fs-5 fw-bold ">Pipeline</h5>
+            <h5 class="fs-5 fw-bold ">Activities</h5>
 
         </div>
         <div class="col-md-6 mt-3">
            <div>
-               <form action="/admin/dashboard/pipeline" method="post">
+               <form action="/admin/user/activities" method="post">
                    @csrf
                    <div class="container">
                        <div class="row">
-                           <div class="col-md-4">
-                               <select name="sale_person" id="" class="text-center">
-                                <option value="" active class="text-secondary">Choose sale person</option>
-                                   @foreach($user as $u)
-                                        <option value="{{$u->id}}">{{ $u->username }}</option>
-                                   @endforeach
-                                </select>
-                            </div>
-                           <div class="col-md-4">
-                               <select name="status" id="" class="text-center">
-                                   <option value="" active class="text-secondary">Choose status</option>
-                                   <option value="Pending">Pending</option>
-                                   <option value="Closed">Closed</option>
-                               </select>
-                           </div>
+                           <div class="col-md-6"></div>
                            <div class="col-md-3">
                                 <input type="date"  name="date" class="form-control">
                            </div>
@@ -53,6 +50,7 @@
                     <th><i class="fa-thin fa-square"></i></td>
                     <th>No</td>
                     <th>Name</td>
+                    <td>Type</td>
                     <th>NRC</td>
                     <th>Phone</td>
                     <th>Sale Person</th>
@@ -60,17 +58,23 @@
                     <th>Status</th>
                     <th>Action</td>
                 </tr>
-                    @foreach($assign as $a)  
+               
+                    @foreach($assign as $c)  
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
-                            <td>{{ $a->id }}</td>
-                            <td>{{ $a->customer->full_name }}</td>
-                            <td>{{ $a->customer->nrc }}</td>
-                            <td>{{ $a->customer->phone }}</td>
-                            <td>{{ $a->user->username }}</td>
-                            <td>{{ $a->assign_date }}</td>
-                            <td>{{ $a->customer->status }}</td>
-                            <td><a href=""><button class="btn btn-sm btn-primary">View Datail</button></a></td>
+                            <td>{{ $c->customer->id }}</td>
+                            <td>{{ $c->customer->full_name }}</td>
+                            <td>{{ $c->customer->type }}</td>
+                            <td>{{ $c->customer->nrc }}</td>
+                            <td>{{ $c->customer->phone }}</td>
+                            <td>{{ $c->user->username }}</td>
+                            <td>{{ $c->assign_date }}</td>
+                            @if($c->customer->status == "Pending")
+                                <td>{{ $c->customer->status }}</td>
+                            @else
+                                <td class="text-warning fw-bold">{{ $c->customer->status }}</td>
+                            @endif
+                            <td><a href="/admin/customer/detail/{{$c->customer->id}}"><button class="btn btn-sm btn-primary">View Datail</button></a></td>
                        </tr>
                     @endforeach
                        </table>
@@ -81,7 +85,8 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-        </div>
+            {{ $assign->links() }}
+            </div>
     </div>
 
 </div>

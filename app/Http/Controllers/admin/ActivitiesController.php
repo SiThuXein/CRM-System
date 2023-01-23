@@ -22,48 +22,31 @@ class ActivitiesController extends Controller
         $sale_person = request()->sale_person;
         $status = request()->status;
         $date = request()->date;
-        
+        $customer = Customer::all();
+        $user = User::all();
         $asg = Assign::all();
         if(isset($sale_person) && !isset($status) && !isset($date)){
-            foreach($asg as $a){
-                $username = $a->user->username;
-                if($username == $sale_person){
-                    $customer = Customer::all();
-                    $user = User::all();
-                    $assign = Assign::where("user_id",$a->user->id)->paginate(7);
-                    return view("activities",compact(["assign","customer","user"]));
-                }
-                else{
-                    return redirect()->back()->with("not_found","Result Not Found");
-                }
-            }
+                    $assign = Assign::where("user_id",$sale_person)->paginate(7);
+                    return view("pipeline",compact(["assign","customer","user"]));
         }
         else if(isset($sale_person) && isset($status) && !isset($date)){
             foreach($asg as $a){
-                if($a->user->username == $sale_person){
+                if($a->user->id == $sale_person){
                     if($a->customer->status == $status){
-                            $customer = Customer::all();
-                            $user = User::all();
-                            $assign = Assign::where("user_id",$a->user->id)->paginate(7);
-                            return view("activities",compact(["assign","customer","user"]));
+                            $assign = Assign::where("user_id",$a->user->id)->where("customer_id",$a->customer->id)->paginate(7);
+                            return view("pipeline",compact(["assign","customer","user"]));
                         }
                 }
-                else{
-                    return redirect()->back()->with("not_found","Result Not Found");
-                }   
+                                    
             }
         }
         else if(isset($sale_person) && isset($status) && isset($date)){
             foreach($asg as $a){
-                if($a->user->username == $sale_person){
+                if($a->user->id == $sale_person){
                     if($a->customer->status == $status){
-                        if($a->assign_date == $date){
-                            $customer = Customer::all();
-                            $user = User::all();
-                            $assign = Assign::where("user_id",$a->user->id)->where("customer_id",$a->customer->id)->paginate(7);
+                            $assign = Assign::where("assign_date",$date)->where("user_id",$a->user->id)->where("customer_id",$a->customer->id)->paginate(7);
 
-                            return view("activities",compact(["assign","customer","user"]));
-                            }
+                            return view("pipeline",compact(["assign","customer","user"]));
                         }
                 }
                 else{
@@ -81,7 +64,8 @@ class ActivitiesController extends Controller
 
     public function activities_detail($id){
         $customer = Customer::find($id);
-        return view("activitiesDetail",compact(["customer"]));
+        $act = Activities::find($id);
+        return view("activitiesDetail",compact(["customer","act"]));
     }
 
     public function close_account($id){
@@ -93,7 +77,7 @@ class ActivitiesController extends Controller
         $input6 = request()->input6;
         $comment = request()->comment;
 
-        Activities::create([
+        Activities::where('id',$id)->update([
             "customer_id" => $id,
             "have_other_account" => $input1,
             "greet_the_customer" => $input2,

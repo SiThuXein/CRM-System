@@ -50,15 +50,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    // public function customer(){
-    //     return $this->hasMany(Customer::class);
-    // }
     public function assign(){
         return $this->hasMany(Assign::class);
     }
 
     public function product(){
-        return $this->hasMany(Product::class);
+        return $this->belongsToMany(Product::class,"product_user");
     }
 
     public function customer(){

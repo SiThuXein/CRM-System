@@ -9,9 +9,9 @@ use App\Models\Role;
 
 class EditUserController extends Controller
 {
-    // public function __construct(){
-    //     return $this->middleware("auth");
-    // }
+    public function __construct(){
+        return $this->middleware("auth");
+    }
     public function index($id){
         $username = session()->get("username");
         $u = User::where("username",$username)->first();

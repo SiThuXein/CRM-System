@@ -13,7 +13,8 @@ class Product extends Model
     protected $fillable = [
         "product_name",
         "sold_date",
-  
+        "customer_id",
+        "user_id"
     ];
 
     public function customer(){
@@ -21,7 +22,7 @@ class Product extends Model
     }
 
     public function user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class,"product_user");
     }
 
 }

@@ -28,7 +28,7 @@
                        <div class="row">
                            <div class="col-md-1"></div>
                             <div class="col-md-2">
-                                <label for="" class="fw-bold fs-6">Date</label>
+                                <label for="" class="fw-bold fs-6">Start Date</label>
                                 <input type="date"  name="date" class="form-control">
                            </div>
                            <div class="col-md-2">
@@ -75,30 +75,18 @@
                 </tr>
                 <tr>
                 </tr>
-                @foreach($user as $u)
-                       <tr class="row_2">
-                            <td><i class="fa-thin fa-square"></i></td>
-                            <td></td>
-                            <td class="text-end">{{ $count_1 = count($u->customer->where("status","Pending"))  }}</td>
-                            <td class="text-end">{{ $count_2 = count($u->customer->where("status","Closed"))  }}</td>
-                            <td class="text-end">
-                                {{ $count_1 + $count_2 }}
-                            </td>
-                       
-                       </tr>
-                    @endforeach
-                    <!-- @foreach($user as $u)
+                    @foreach($user as $u)
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
                             <td>{{ $u->username }}</td>
-                            <td class="text-end">{{ $count_1 = count($u->customer->where("status","Pending")->where("start_date",request()->start_date))  }}</td>
-                            <td class="text-end">{{ $count_2 = count($u->customer->where("status","Closed")->where("start_date",request()->start_date))  }}</td>
+                            <td class="text-end">{{ $count_1 = count($u->customer->where("status","Pending")->where("start_date",request()->date))  }}</td>
+                            <td class="text-end">{{ $count_2 = count($u->customer->where("status","Closed")->where("start_date",request()->date))  }}</td>
                             <td class="text-end">
                                 {{ $count_1 + $count_2 }}
                             </td>
                        
                        </tr>
-                       @endforeach -->
+                       @endforeach
           
 
                 <tr>

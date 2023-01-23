@@ -14,25 +14,11 @@
         </div>
         <div class="col-md-6 mt-3">
            <div>
-               <form action="/admin/dashboard/pipeline" method="post">
+               <form action="/admin/user/pipeline" method="post">
                    @csrf
                    <div class="container">
                        <div class="row">
-                           <div class="col-md-4">
-                               <select name="sale_person" id="" class="text-center">
-                                <option value="" active class="text-secondary">Choose sale person</option>
-                                   @foreach($user as $u)
-                                        <option value="{{$u->id}}">{{ $u->username }}</option>
-                                   @endforeach
-                                </select>
-                            </div>
-                           <div class="col-md-4">
-                               <select name="status" id="" class="text-center">
-                                   <option value="" active class="text-secondary">Choose status</option>
-                                   <option value="Pending">Pending</option>
-                                   <option value="Closed">Closed</option>
-                               </select>
-                           </div>
+                           <div class="col-md-6"></div>
                            <div class="col-md-3">
                                 <input type="date"  name="date" class="form-control">
                            </div>
@@ -60,7 +46,7 @@
                     <th>Status</th>
                     <th>Action</td>
                 </tr>
-                    @foreach($assign as $a)  
+                    @foreach($assign as $a)
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
                             <td>{{ $a->id }}</td>
@@ -69,8 +55,12 @@
                             <td>{{ $a->customer->phone }}</td>
                             <td>{{ $a->user->username }}</td>
                             <td>{{ $a->assign_date }}</td>
-                            <td>{{ $a->customer->status }}</td>
-                            <td><a href=""><button class="btn btn-sm btn-primary">View Datail</button></a></td>
+                            @if($a->customer->status == "Pending")
+                                <td>{{ $a->customer->status }}</td>
+                            @else
+                                <td class="text-warning fw-bold">{{ $a->customer->status }}</td>
+                            @endif
+                            <td><a href="/admin/customer/detail/{{$a->customer->id}}"><button class="btn btn-sm btn-primary">View Datail</button></a></td>
                        </tr>
                     @endforeach
                        </table>
