@@ -10,14 +10,21 @@ use App\Models\Role;
 class EditUserController extends Controller
 {
     public function __construct(){
-        return $this->middleware("auth");
+        // return $this->middleware("auth");
     }
     public function index($id){
         $username = session()->get("username");
-        $u = User::where("username",$username)->first();
+        $user = User::where("username",$username)->first();
+        if($user->role == "manager"){
+            $u = User::where("username",$username)->first();
       
-        $user = User::find($id);
-        return view("EditUser",compact(['user']));
+            $user = User::find($id);
+            return view("EditUser",compact(['user']));
+        }
+        else{
+            return redirect()->back()->with("auth","Permission Denied");
+        }
+       
     }
 
     public function edit($id){

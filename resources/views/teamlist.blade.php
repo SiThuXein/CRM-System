@@ -13,6 +13,17 @@
 
         </div>
     </div>
+    <!-- @if(session("auth"))
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="alert alert-warning" style="padding:0;margin:0;">
+            <p class="text-center">{{ session("auth") }}</p>
+            </div>
+        </div>
+    </div>
+       
+    @endif -->
     <div class="row mt-5">
         <div class="col-md-1"></div>
         <div class="col-md-10">

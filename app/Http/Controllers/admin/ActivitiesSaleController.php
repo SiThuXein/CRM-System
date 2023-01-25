@@ -11,6 +11,7 @@ class ActivitiesSaleController extends Controller
     public function index(){
         $assign = Assign::paginate(7);
         return view("activitiesSale",compact(["assign"]));
+    
     }
 
     public function search_activities(){

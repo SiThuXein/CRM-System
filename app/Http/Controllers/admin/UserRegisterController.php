@@ -29,9 +29,10 @@ class UserRegisterController extends Controller
           "crm_role" => $crm_role,
           "branch" => $branch,
         ]);
-
-        $role = $user->assignRole($role);
-        $role->givePermissionTo('edit info');
+        
+            $role1 = $user->assignRole($role);
+            $role1->givePermissionTo('edit info');
+     
 
         return redirect("/admin");
     }

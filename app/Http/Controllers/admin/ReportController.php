@@ -13,6 +13,8 @@ class ReportController extends Controller
         $assign = Assign::paginate(5);
         $user = User::all();
         return view("activitiesReport",compact(["assign","user"]));
+     
+      
     }
 
     public function search(){
@@ -42,6 +44,6 @@ class ReportController extends Controller
         }else{
             return redirect()->back()->with("not_found","Result Not Found");
         }
-
     }
+
 }

@@ -20,10 +20,14 @@
             Reports
           </a>
           <ul class="dropdown-menu">
+            @auth
+            @if(auth()->user()->role == "manager")
             <li><a class="dropdown-item" href="/admin/dashboard/activities/report">Activities Report</a></li>
             <li><a class="dropdown-item" href="/admin/dashboard/product/report">Product Sold Report</a></li>
             <li><a class="dropdown-item" href="/admin/dashboard/summary/activities">Summary Activities Report</a></li>
             <li><a class="dropdown-item" href="/admin/dashboard/summary/product/sold">Summary Product Sold Report</a></li>
+            @endif
+            @endauth
             <li><a class="dropdown-item" href="/admin/dashboard/complain">Complain</a></li>
           </ul>
         </li>
@@ -45,7 +49,13 @@
             @endif
           </a>
           <ul class="dropdown-menu">
+            @auth
+            @if(auth()->user()->role == "manager")
             <li><a class="dropdown-item" href="/admin/dashboard/teamlist">Team List</a></li>
+            @endif
+            @endauth
+            <li><a class="dropdown-item" href="/admin/dashboard/profile">Profile</a></li>
+            <li><a class="dropdown-item" href="/admin/dashboard/logout">Logout</a></li>
           </ul>
         </li>
     

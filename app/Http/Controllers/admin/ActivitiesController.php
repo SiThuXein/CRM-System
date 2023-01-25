@@ -16,8 +16,8 @@ class ActivitiesController extends Controller
         $customer = Customer::all();
         $user = User::all();
         return view("activities",compact(["assign","customer","user"]));
-    }
 
+    }
     public function search(){
         $sale_person = request()->sale_person;
         $status = request()->status;

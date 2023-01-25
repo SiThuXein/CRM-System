@@ -16,6 +16,7 @@ class ProductReportController extends Controller
         $product = Product::all();
         $assign = Assign::paginate(5);
         return view("productSoldReport",compact(["user","assign","product"]));
+    
     }
 
     public function search_report(){
@@ -50,6 +51,5 @@ class ProductReportController extends Controller
         else{
             return redirect()->back()->with("not_found","Result Not Found");
         }
-        
     }
 }
