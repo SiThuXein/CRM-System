@@ -17,6 +17,7 @@ class UserLoginController extends Controller
         $username = request()->username;
         $password = request()->password;
         $role1 = "manager";
+        $role2 = "admin";
         $users = User::all();
         foreach($users as $user){
             if($user->role==$role1){
@@ -25,6 +26,14 @@ class UserLoginController extends Controller
                     $user = User::where("username",$user->username)->first();
                     Auth::login($user);
                     return redirect("/admin/dashboard");
+                }
+            }
+            else if($user->role==$role2 && $user->role!=$role1){
+                if($username==$user->username && $password==$user->password){
+                    session()->put("username",$user->username);
+                    $user = User::where("username",$user->username)->first();
+                    Auth::login($user);
+                    return redirect("/admin/panel");
                 }
             }
             else if($user->role!=$role1){

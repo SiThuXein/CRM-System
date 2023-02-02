@@ -41,6 +41,7 @@
                                         <option value="manager">Manager</option>
                                         <option value="teller">Teller</option>
                                         <option value="flo">FLO</option>
+                                        <option value="admin">Admin</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3">
@@ -49,6 +50,7 @@
                                         <option  active class="text-secondary fs-6">Choose CRM Role ...</option>
                                         <option value="Supervisor">Supervisor</option>
                                         <option value="Sale">Sale</option>
+                                        <option value="Admin">Admin</option>
                                     </select>
                                 </div>
                                 <div class="form-group mt-3">

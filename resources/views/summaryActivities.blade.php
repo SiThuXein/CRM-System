@@ -5,7 +5,7 @@
 
 @section("content")
 
-@if(session("not_found"))
+<!-- @if(session("not_found"))
 <div class="containers">
     <div class="row">
         <div class="col-md-1"></div>
@@ -15,7 +15,7 @@
         <div class="col-md-1"></div>
     </div>
 </div>
-@endif
+@endif -->
 
 <div class="container-fluid pipeline bg-white" id="pipeline">
     <div class="row mt-3">
@@ -78,7 +78,7 @@
                 @foreach($user as $u)
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
-                            <td></td>
+                            <td>{{ $u->username }}</td>
                             <td class="text-end">{{ $count_1 = count($u->customer->where("status","Pending"))  }}</td>
                             <td class="text-end">{{ $count_2 = count($u->customer->where("status","Closed"))  }}</td>
                             <td class="text-end">

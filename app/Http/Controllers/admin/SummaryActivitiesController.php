@@ -11,7 +11,7 @@ use App\Models\Assign;
 class SummaryActivitiesController extends Controller
 {
     public function summary_activities(){
-        $user = User::all();
+        $user = User::where("crm_role","sale")->get();
         $pending_customer = 0;
         $close_customer = 0;
         $total_customer = 0;
@@ -61,6 +61,9 @@ class SummaryActivitiesController extends Controller
                 'total_customer' => $total_customer,
                 'user' => $users
             ]);
+        }
+        else{
+            return redirect()->back()->with('not_found','Result Not Found');
         }
     }
 }

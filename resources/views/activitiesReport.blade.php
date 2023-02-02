@@ -4,7 +4,7 @@
 @include("layouts.footer")
 
 @section("content")
-
+<!-- 
 @if(session("not_found"))
 <div class="containers">
     <div class="row">
@@ -15,7 +15,7 @@
         <div class="col-md-1"></div>
     </div>
 </div>
-@endif
+@endif -->
 
 <div class="container-fluid pipeline bg-white" id="pipeline">
     <div class="row mt-3">

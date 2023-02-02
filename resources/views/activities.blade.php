@@ -5,7 +5,7 @@
 
 @section("content")
 
-@if(session("not_found"))
+<!-- @if(session("not_found"))
 <div class="containers">
     <div class="row">
         <div class="col-md-1"></div>
@@ -15,7 +15,7 @@
         <div class="col-md-1"></div>
     </div>
 </div>
-@endif
+@endif -->
 <div class="container-fluid pipeline bg-white" >
     <div class="row mt-3">
         <div class="col-md-1"></div>

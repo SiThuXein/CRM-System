@@ -1,11 +1,21 @@
 <nav class="navbar navbar-expand-lg bg-primary">
   <div class="container-fluid">
+    @if(auth()->user()->role == "manager")
     <a class="navbar-brand" href="/admin/dashboard" id="dashboard">Dashboard</a>
+    @endif
+    @if(auth()->user()->role == "teller")
+    <a class="navbar-brand" href="/admin/user/pipeline" id="dashboard">Dashboard</a>
+    @endif
+    @if(auth()->user()->role != "manager" && auth()->user()->role != "teller")
+    <a class="navbar-brand" href="/admin/panel" id="dashboard">Dashboard</a>
+    @endif
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      @auth
+      @if(auth()->user()->role == "manager" || auth()->user()->role == "teller")
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Sales
@@ -31,8 +41,11 @@
             <li><a class="dropdown-item" href="/admin/dashboard/complain">Complain</a></li>
           </ul>
         </li>
-    
+        @endif
+      @endauth
       </ul>
+    
+
 
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="profile">
@@ -42,12 +55,14 @@
           </h6>
 
         </li> -->
+        
         <li class="nav-item dropdown" id=""list2>
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             @if(session("username"))
               {{ session("username") }}
             @endif
           </a>
+        
           <ul class="dropdown-menu">
             @auth
             @if(auth()->user()->role == "manager")
@@ -58,7 +73,6 @@
             <li><a class="dropdown-item" href="/admin/dashboard/logout">Logout</a></li>
           </ul>
         </li>
-    
       </ul>
 
     </div>

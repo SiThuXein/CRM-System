@@ -23,6 +23,9 @@ use App\Http\Controllers\admin\ActivitiesSaleController;
 use App\Http\Controllers\admin\CustomerDetailController;
 use App\Http\Controllers\admin\LogoutController;
 use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\admin\CategoryController;
 
 
 // Route::get('/', function () {
@@ -79,7 +82,24 @@ Route::middleware(["auth"])->namespace("Admin")->prefix("admin")->group(function
     Route::post('customer/detail/{id}',[CustomerDetailController::class,'add_complain']);
 });
   
-
+Route::middleware(["auth"])->namespace("admin")->prefix("admin/panel")->group(function(){
+    //For Admin
+    Route::get('/',[AdminController::class,'index']);
+    Route::get('/products',[ProductController::class,'index']);
+    Route::post('/products',[ProductController::class,'product_search']);
+    Route::get('products/add',[ProductController::class,'product']);
+    Route::post('products/add',[ProductController::class,'add_product']);
+    Route::get('products/edit/{id}',[ProductController::class,'edit_product']);
+    Route::post('products/edit/{id}',[ProductController::class,'update_product']);
+    Route::get('products/delete/{id}',[ProductController::class,'delete_product']);
+    Route::get('/categories',[CategoryController::class,'index']);
+    Route::post('/categories',[CategoryController::class,'category_search']);
+    Route::get('categories/add',[CategoryController::class,'category']);
+    Route::post('categories/add',[CategoryController::class,'add_category']);
+    Route::get('categories/edit/{id}',[CategoryController::class,'edit_category']);
+    Route::post('categories/edit/{id}',[CategoryController::class,'update_category']);
+    Route::get('categories/delete/{id}',[CategoryController::class,'delete_category']);
+});
 
 
 
