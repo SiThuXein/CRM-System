@@ -60,7 +60,8 @@
                     <th>Status</th>
                     <th>Action</td>
                 </tr>
-                    @foreach($assign as $a)  
+                    @foreach($assign as $a)
+                        @if($a->customer->status == "Pending")
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
                             <td>{{ $a->id }}</td>
@@ -72,6 +73,7 @@
                             <td>{{ $a->customer->status }}</td>
                             <td><a href=""><button class="btn btn-sm btn-primary">View Datail</button></a></td>
                        </tr>
+                       @endif
                     @endforeach
                        </table>
         </div>

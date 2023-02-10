@@ -27,14 +27,14 @@ class ActivitiesController extends Controller
         $asg = Assign::all();
         if(isset($sale_person) && !isset($status) && !isset($date)){
                     $assign = Assign::where("user_id",$sale_person)->paginate(7);
-                    return view("pipeline",compact(["assign","customer","user"]));
+                    return view("activities",compact(["assign","customer","user"]));
         }
         else if(isset($sale_person) && isset($status) && !isset($date)){
             foreach($asg as $a){
                 if($a->user->id == $sale_person){
                     if($a->customer->status == $status){
                             $assign = Assign::where("user_id",$a->user->id)->where("customer_id",$a->customer->id)->paginate(7);
-                            return view("pipeline",compact(["assign","customer","user"]));
+                            return view("activities",compact(["assign","customer","user"]));
                         }
                 }
                                     
@@ -46,7 +46,7 @@ class ActivitiesController extends Controller
                     if($a->customer->status == $status){
                             $assign = Assign::where("assign_date",$date)->where("user_id",$a->user->id)->where("customer_id",$a->customer->id)->paginate(7);
 
-                            return view("pipeline",compact(["assign","customer","user"]));
+                            return view("activities",compact(["assign","customer","user"]));
                         }
                 }
                 else{

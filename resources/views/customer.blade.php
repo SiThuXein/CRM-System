@@ -11,6 +11,7 @@
         <div class="col-md-4 mt-3">
             <h5 class="fs-5 fw-bold ">Customers</h5>
         </div>
+        <div class="col-md-1"></div>
         <div class="col-md-5 mt-3">
            <div>
                <form action="/admin/dashboard/customer/pending/search" method="get">
@@ -30,9 +31,9 @@
                 </form>
            </div>
         </div>
-        <div class="col-md-1 mt-3">
+        <!-- <div class="col-md-1 mt-3">
            <a href="/admin/dashboard/assign"><button class="btn btn-primary">Assign</button></a>
-        </div>
+        </div> -->
         <div class="col-md-1"></div>
     </div>
     <div class="row mt-3">
@@ -47,18 +48,20 @@
                     <th>Phone</td>
                     <th>Branch</td>
                     <th>Opening Date</td>
+                    <th>Status</th>
                     <th>Action</td>
                 </tr>
                        @foreach($customers as $customer)
                        
                        <tr class="row_2">
-                            <td><i class="fa-thin fa-square"></i></td>
+                            <th><i class="fa-thin fa-square"></i></td>
                             <td>{{ $customer->id }}</td>
                             <td>{{ $customer->full_name }}</td>
                             <td>{{ $customer->nrc }}</td>
                             <td>{{ $customer->phone }}</td>
                             <td></td>
                             <td>{{ $customer->created_at }}</td>
+                            <td>{{ $customer->status }}</td>
                             <td><a href="/admin/dashboard/customer/detail/{{ $customer->id }}"><button class="btn btn-sm btn-primary">View Datail</button></a></td>
                        </tr>
                        @endforeach

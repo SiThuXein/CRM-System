@@ -19,12 +19,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="" class="form-label">Customer Name</label>
-                    <select name="customer_id" id="" class="form-control">
-                        <option value="" class="text-secondary">Choose ...</option>
-                    @foreach($customer as $cus)
-                        <option value="{{ $cus->id }}">{{ $cus->full_name }}</option>
-                    @endforeach
-                    </select>
+                    <input type="text" name="customer_id" value="{{$customer->full_name}}" class="form-control">
                 </div>
                 <div class="form-group mt-3">
                     <label for="" class="form-label">Staff Name</label>

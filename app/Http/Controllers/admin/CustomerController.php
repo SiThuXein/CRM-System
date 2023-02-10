@@ -8,12 +8,9 @@ use App\Models\Customer;
 
 class CustomerController extends Controller
 {
-    public function pending_customer(){
-        $customers = Customer::where("status","Pending")->paginate(7);
+    public function index(){
+        $customers = Customer::where("status","New")->paginate(7);
         return view("customer",compact('customers'));
     }
-    public function closed_customer(){
-        $customers = Customer::where("status","closed")->paginate(7);
-        return view("customer",compact('customers'));
-    }
+ 
 }

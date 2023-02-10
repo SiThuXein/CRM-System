@@ -42,9 +42,8 @@ use App\Http\Controllers\admin\CategoryController;
 Route::middleware(["auth"])->namespace("Admin")->prefix("admin/dashboard")->group(function(){
     //For Sale manager
     Route::get('/',[DashboardController::class,'index']);
-    Route::get('/customer/pending',[CustomerController::class,'pending_customer']);
-    Route::get('/customer/closed',[CustomerController::class,'closed_customer']);
-    Route::get('/customer/pending/search',[SearchController::class,'search_pending_customer']);
+    Route::get('/customers',[CustomerController::class,'index']);
+    // Route::get('/customer/pending/search',[SearchController::class,'search_pending_customer']);
     Route::get('/customer/detail/{id}',[ViewDetailController::class,'index']);
     Route::get('/pipeline',[PipeLineController::class,'index']);
     Route::post('/pipeline',[PipeLineController::class,'search']);
@@ -55,7 +54,7 @@ Route::middleware(["auth"])->namespace("Admin")->prefix("admin/dashboard")->grou
     Route::get('/complain',[ComplainController::class,'index']);
     Route::get('/complain/add',[ComplainController::class,'add']);
     Route::post('/complain/add',[ComplainController::class,'create']);
-    Route::get('/assign',[AssignController::class,'index']);
+    Route::get('/assign/{id}',[AssignController::class,'index']);
     Route::post('/assign',[AssignController::class,'create']);
     Route::get('/activities',[ActivitiesController::class,'activities']);
     Route::post('/activities',[ActivitiesController::class,'search']);

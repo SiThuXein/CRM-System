@@ -31,14 +31,17 @@ class PipeLineController extends Controller
         }
         else if(isset($sale_person) && isset($status) && !isset($date)){
             foreach($asg as $a){
-                if($a->user->id == $sale_person){
-                    if($a->customer->status == $status){
-                            $assign = Assign::where("user_id",$a->user->id)->where("customer_id",$a->customer->id)->paginate(7);
-                            return view("pipeline",compact(["assign","customer","user"]));
+                $user_id = $a->user->id;
+                $customer_status = $a->customer->status;
+                if($user_id == $sale_person){
+                    if($customer_status == $status){
+                        $assign = Assign::where("user_id",$user_id)->where("customer_id",$a->customer->id)->paginate(7);
                         }
-                }
-                                    
+                }                 
             }
+                return view("pipeline",compact(["assign","customer","user"]));
+
+          
         }
         else if(isset($sale_person) && isset($status) && isset($date)){
             foreach($asg as $a){

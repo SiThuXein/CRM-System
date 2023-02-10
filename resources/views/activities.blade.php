@@ -73,7 +73,8 @@
                     <th>Action</td>
                 </tr>
                
-                    @foreach($assign as $c)  
+                    @foreach($assign as $c)
+                        @if($c->customer->status == "Closed")  
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
                             <td>{{ $c->customer->id }}</td>
@@ -90,6 +91,7 @@
                             @endif
                             <td><a href="/admin/dashboard/activities/detail/{{$c->customer->id}}"><button class="btn btn-sm btn-primary">View Datail</button></a></td>
                        </tr>
+                       @endif
                     @endforeach
                        </table>
         </div>

@@ -10,10 +10,13 @@ use App\Models\User;
 
 class AssignController extends Controller
 {
-    public function index(){
-        $customer = Customer::all();
+    public function index($id){
+        $customer = Customer::find($id);
         $user = User::all();
-        return view("assign",compact(["customer","user"]));
+        return view("assign",[
+            'customer' => $customer,
+            'user' => $user
+        ]);
     }
 
     public function create(){

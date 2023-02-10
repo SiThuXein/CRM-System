@@ -14,7 +14,7 @@
         <div class="col-md-4 mt-5 text-center">
             <div>
                 <a href="/admin/dashboard/customer/pending"><button class="btn btn-sm btn-info">Back</button></a>
-                <a href="/admin/dashboard/assign"><button class="btn btn-sm btn-primary">Assign</button></a>
+                <a href="/admin/dashboard/assign/{{$customer->id}}"><button class="btn btn-sm btn-primary">Assign</button></a>
                 <button class="btn btn-sm btn-warning">Close</button>
             </div>
         </div>
@@ -56,7 +56,7 @@
     </div>
 </div>
 
-<div class="container mt-3 detail_2">
+<div class="container  bg-white detail_2">
     <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-10">

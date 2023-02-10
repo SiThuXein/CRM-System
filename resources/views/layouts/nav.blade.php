@@ -18,9 +18,10 @@
       @if(auth()->user()->role == "manager" || auth()->user()->role == "teller")
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Sales
+            Customers
           </a>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/admin/dashboard/customers">New Customers</a></li>
             <li><a class="dropdown-item" href="/admin/dashboard/pipeline">Pipeline</a></li>
             <li><a class="dropdown-item" href="/admin/dashboard/activities">Activities</a></li>
           </ul>
