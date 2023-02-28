@@ -5,7 +5,18 @@
 
 @section("content")
 
-<div class="container-fluid pipeline bg-white" >
+@if(session("not_found"))
+<div class="containers">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="alert alert-warning">{{ session("not_found") }}</div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+@endif
+<div class="container-fluid pipeline bg-white mt-5" >
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-4 mt-3">
@@ -71,7 +82,7 @@
                             <td>{{ $a->user->username }}</td>
                             <td>{{ $a->assign_date }}</td>
                             <td>{{ $a->customer->status }}</td>
-                            <td><a href=""><button class="btn btn-sm btn-primary">View Datail</button></a></td>
+                            <td><a href="/admin/dashboard/pipeline/detail/{{$a->customer->id}}"><button class="btn btn-sm btn-primary">View Datail</button></a></td>
                        </tr>
                        @endif
                     @endforeach

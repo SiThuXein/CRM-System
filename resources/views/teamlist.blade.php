@@ -5,12 +5,16 @@
 
 @section("content")
 
-<div class="container-fluid pipeline bg-white" >
+<div class="container-fluid pipeline bg-white mt-5" >
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-4 mt-3">
             <h5 class="fs-5 fw-bold ">Team List</h5>
 
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3  text-end mt-3">
+            <a href="/admin/dashboard/teamlist/export"><img src="{{ asset('images/excel.png') }}" alt="Export Excel File" width="50px" height="50px"></a>
         </div>
     </div>
     <!-- @if(session("auth"))

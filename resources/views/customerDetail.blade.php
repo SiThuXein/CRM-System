@@ -5,7 +5,7 @@
 
 @section("content")
 
-<div class="container mt-3 bg-white">
+<div class="container mt-3 bg-white mt-5">
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-6    ">

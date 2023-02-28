@@ -17,7 +17,7 @@
 </div>
 @endif
 
-<div class="container-fluid pipeline bg-white" id="pipeline">
+<div class="container-fluid pipeline bg-white mt-5" id="pipeline">
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-10 mt-3 ">

@@ -36,10 +36,13 @@ class PipeLineController extends Controller
                 if($user_id == $sale_person){
                     if($customer_status == $status){
                         $assign = Assign::where("user_id",$user_id)->where("customer_id",$a->customer->id)->paginate(7);
+                        return view("pipeline",compact(["assign","customer","user"]));
                         }
-                }                 
+                }
+                else{
+                    return redirect()->back()->with("not_found","Result Not Found");
+                }                  
             }
-                return view("pipeline",compact(["assign","customer","user"]));
 
           
         }
@@ -62,6 +65,11 @@ class PipeLineController extends Controller
         }
      
 
+    }
+
+    public function pipeline_detail($id){
+        $customer = Customer::find($id);
+        return view("pipelineDetail",compact(["customer"]));
     }
 
 

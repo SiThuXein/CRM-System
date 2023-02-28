@@ -1,11 +1,22 @@
 body{
     background: #f6f7f2;
 }
+/* Nav */
+#nav{
+    height:50px;
+    position:fixed;
+    top:0;
+    background: #007bff;
+}
+
 /* Register */
 
 #register_select{
-    width:30%;
-    margin-left: 3%;
+    width:100%;
+    height: 40px;
+    border:1px solid #ccc;
+    border-radius: 3px;
+    /* margin-left: 3%; */
 }
 #register_gender{
     margin-left: 3%;
@@ -73,6 +84,11 @@ body{
     text-align:center;
     font-weight: bold;
 }
+.chart .chart_2{
+    width:785px;
+    margin-left: 20px;
+}
+
 
 /* footer */
 

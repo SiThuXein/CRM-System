@@ -6,7 +6,7 @@
 @section("content")
 
 
-<div class="container-fluid admin_dashboard">
+<div class="container-fluid admin_dashboard mt-5" >
     <div class="row mt-5">
         <div class="col-md-1"></div>
         <div class="col-md-3 col">
@@ -43,16 +43,16 @@
     </div>
 </div>
 
-<div class="container mt-5">
+<div class="container-fluid mt-5 chart">
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-3 mt-5 bg-white">
+        <div class="col-md-3 mt-5 bg-white chart_1">
             <div>
                 <canvas id="chart1"></canvas>
             </div>
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-6 mt-5 bg-white">
+        <!-- <div class="col-md-1"></div> -->
+        <div class="col-md-6 mt-5 bg-white chart_2">
             <div>
                 <canvas id="chart2"></canvas>
             </div>

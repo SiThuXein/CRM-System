@@ -60,7 +60,7 @@
    
             </div>  <!-- first container -->
 
-            <div class="container bg-white detail_2">
+            <div class="container bg-white  detail_2">
                 <div class="row">
                     <div class="col-md-1"></div>
                     <div class="col-md-10">

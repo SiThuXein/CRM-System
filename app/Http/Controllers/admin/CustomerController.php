@@ -12,5 +12,10 @@ class CustomerController extends Controller
         $customers = Customer::where("status","New")->paginate(7);
         return view("customer",compact('customers'));
     }
+    public function search(){
+        $name = request()->name;
+        $customers = Customer::where("status","New")->where('full_name','like',$name.'%')->paginate(7);
+        return view("customer",compact('customers'));
+    }
  
 }

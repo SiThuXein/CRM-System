@@ -12,54 +12,105 @@ class SummaryActivitiesController extends Controller
 {
     public function summary_activities(){
         $user = User::where("crm_role","sale")->get();
+        $users = User::where("crm_role","sale")->get();
         $pending_customer = 0;
         $close_customer = 0;
         $total_customer = 0;
         foreach($user as $u){
             foreach($u->customer as $c){
                 if($c->status == "Pending"){
-                    $pending_customer++;                    
+                   $pending_customer++;                    
                 }
-                else{
+                if($c->status == "Closed"){
                     $close_customer++;
                 }
+
             }
-            $total_customer = $pending_customer + $close_customer;
         }
+        $total_customer = $pending_customer + $close_customer;
         return view("summaryActivities",[
             'pending_customer' => $pending_customer,
             'close_customer' => $close_customer,
             'total_customer' => $total_customer,
-            'user' => $user
+            'user' => $user,
+            'users' => $users
         ]);
     }
 
     public function search_summary_activities(){
         $date = request()->date;
         $sale_person = request()->sale_person;
-        $users = User::all();
+        $users = User::where('crm_role','sale')->get();
         $pending_customer = 0;
         $close_customer = 0;
         $total_customer = 0;
-        if(isset($date)){
-            foreach($users as $u){
+        if(isset($date) && !isset($sale_person)){
+            $user = User::where('crm_role','sale')->get();
+            foreach($user as $u){
                 foreach($u->customer as $c){
                     if($c->start_date == $date && $c->status == "Pending"){
                         $pending_customer++;
                     }
-                    else if($c->start_date == $date && $c->status == "Closed"){
+                    if($c->start_date == $date && $c->status == "Closed"){
                         $close_customer++;
                     }
-                    // $user = $c->whereBetween('start_date',[$start_date,$end_date])->get();
+
                 }
-                $total_customer = $pending_customer + $close_customer; 
             }
+            $total_customer = $pending_customer + $close_customer; 
 
             return view("searchSummary",[
                 'pending_customer' => $pending_customer,
                 'close_customer' => $close_customer,
                 'total_customer' => $total_customer,
-                'user' => $users
+                'user' => $user,
+                'users' => $users
+            ]);
+        }
+        else if(!isset($date) && isset($sale_person)){
+            $user = User::where('crm_role','sale')->where('username',$sale_person)->get();
+            foreach($user as $u){
+                foreach($u->customer as $c){
+                    if($c->status == "Pending"){
+                       $pending_customer++;                    
+                    }
+                    if($c->status == "Closed"){
+                        $close_customer++;
+                    }
+    
+                }
+            }
+            $total_customer = $pending_customer + $close_customer;
+            return view("summaryActivities",[
+                'pending_customer' => $pending_customer,
+                'close_customer' => $close_customer,
+                'total_customer' => $total_customer,
+                'user' => $user,
+                'users' => $users
+
+            ]);
+        }
+        else if(isset($date) && isset($sale_person)){
+            $user = User::where('crm_role','sale')->where('username',$sale_person)->get();
+            foreach($user as $u){
+                foreach($u->customer as $c){
+                    if($c->start_date == $date && $c->status == "Pending"){
+                        $pending_customer++;
+                    }
+                    if($c->start_date == $date  && $c->status == "Closed"){
+                        $close_customer++;
+                    }
+
+                }
+            }
+            $total_customer = $pending_customer + $close_customer; 
+
+            return view("searchSummary",[
+                'pending_customer' => $pending_customer,
+                'close_customer' => $close_customer,
+                'total_customer' => $total_customer,
+                'user' => $user,
+                'users' => $users
             ]);
         }
         else{

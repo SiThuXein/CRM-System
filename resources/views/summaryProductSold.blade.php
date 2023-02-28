@@ -17,26 +17,26 @@
 </div>
 @endif -->
 
-<div class="container-fluid pipeline bg-white" id="pipeline">
+<div class="container-fluid pipeline bg-white mt-5" id="pipeline">
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-10 mt-3 ">
            <div>
-               <form action="/admin/dashboard/product/report" method="post">
+               <form action="/admin/dashboard/summary/product/search" method="post">
                    @csrf
                    <div class="container">
                        <div class="row">
                            <div class="col-md-1"></div>
                             <div class="col-md-2">
                                 <label for="" class="fw-bold fs-6">Date</label>
-                                <input type="date"  name="start_date" class="form-control">
+                                <input type="date"  name="date" class="form-control">
                            </div>
                            <div class="col-md-2">
                                <label for="" class="fw-bold fs-6">Sale Person</label><br>
                                <select name="sale_person" id="" class="text-center">
                                    <option value="" active>All</option>
-                                   @foreach($user as $u)
-                                        <option value="{{ $u->id }}" >{{ $u->username }}</option>
+                                   @foreach($users as $u)
+                                        <option value="{{ $u->username }}" >{{ $u->username }}</option>
                                     @endforeach
                                     </select>
                             </div>
@@ -75,15 +75,15 @@
                 <tr>
                     <td>{{ $u->username }}</td>
                 </tr>
-                @foreach($u->product as $p)
+                    @foreach($u->product as $p)
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
                             <td>{{ $p->product_name }}</td>                     
                            
 
-                @endforeach
-                <td>{{ count($u->product) }}</td>
-                       </tr>
+                    @endforeach
+                            <td>{{ count($u->product) }}</td>
+                    </tr>
 
                 @endforeach
                        </table>

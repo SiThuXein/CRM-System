@@ -5,16 +5,16 @@
 
 @section("content")
 
-<div class="container-fluid customer bg-white">
+<div class="container-fluid customer bg-white mt-5">
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-4 mt-3">
             <h5 class="fs-5 fw-bold ">Customers</h5>
         </div>
         <div class="col-md-1"></div>
-        <div class="col-md-5 mt-3">
+        <div class="col-md-4 mt-3">
            <div>
-               <form action="/admin/dashboard/customer/pending/search" method="get">
+               <form action="/admin/dashboard/customers/" method="post">
                    @csrf
                    <div class="container">
                        <div class="row">
@@ -31,9 +31,11 @@
                 </form>
            </div>
         </div>
-        <!-- <div class="col-md-1 mt-3">
-           <a href="/admin/dashboard/assign"><button class="btn btn-primary">Assign</button></a>
-        </div> -->
+        @if(auth()->user()->role == "teller")
+        <div class="col-md-1 mt-3">
+           <a href="/admin/user/register"><button class="btn btn-primary">New</button></a>
+        </div>
+        @endif
         <div class="col-md-1"></div>
     </div>
     <div class="row mt-3">
@@ -78,5 +80,29 @@
     </div>
 
 </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if(Session::has('success'))
+            toastr.options =
+            {
+                "closeButton" : true
+            }
+            toastr.success("{{ session('success') }}");
+        @endif
+
+        @if(Session::has('error'))
+            toastr.options =
+            {
+                "closeButton" : true
+            }
+            toastr.error("{{ session('error') }}");
+        @endif
+
+    </script>
 
 @endsection
+

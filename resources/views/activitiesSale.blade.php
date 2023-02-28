@@ -16,7 +16,7 @@
     </div>
 </div>
 @endif
-<div class="container-fluid pipeline bg-white" >
+<div class="container-fluid pipeline bg-white mt-5" >
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-4 mt-3">
@@ -60,6 +60,7 @@
                 </tr>
                
                     @foreach($assign as $c)  
+                    @if($c->customer->status == "Closed")
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
                             <td>{{ $c->customer->id }}</td>
@@ -69,13 +70,11 @@
                             <td>{{ $c->customer->phone }}</td>
                             <td>{{ $c->user->username }}</td>
                             <td>{{ $c->assign_date }}</td>
-                            @if($c->customer->status == "Pending")
-                                <td>{{ $c->customer->status }}</td>
-                            @else
-                                <td class="text-warning fw-bold">{{ $c->customer->status }}</td>
-                            @endif
+                            <td class="fw-bold text-warning">{{ $c->customer->status }}</td>
+                         
                             <td><a href="/admin/customer/detail/{{$c->customer->id}}"><button class="btn btn-sm btn-primary">View Datail</button></a></td>
                        </tr>
+                       @endif
                     @endforeach
                        </table>
         </div>

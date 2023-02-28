@@ -5,10 +5,10 @@
 
 @section("content")
 
-<div class="container bg-white mt-3 ">
+<div class="container bg-white  mt-5">
     <div class="row">
         <div class="col-md-3"></div>
-        <div class="col-md-6 mt-3">
+        <div class="col-md-6 mt-5">
             <h6 class="fw-bold">Add Complain</h6>
         </div>
     </div>

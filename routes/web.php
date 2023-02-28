@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\export\ProductSoldReportController;
+use App\Http\Controllers\export\TeamListExportController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\admin\RegisterController;
 use App\Http\Controllers\admin\UserLoginController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\CustomerController;
@@ -32,8 +34,6 @@ use App\Http\Controllers\admin\CategoryController;
 //     return view('welcome');
 // });
 
-    Route::get('/',[RegisterController::class,'index']);
-    Route::post('/register',[Registercontroller::class,'create']);
     Route::get('/admin',[UserLoginController::class,'index']);
     Route::post('/admin/login',[UserLoginController::class,'login']);
     Route::get('/admin/register',[UserRegisterController::class,'index']);
@@ -43,6 +43,7 @@ Route::middleware(["auth"])->namespace("Admin")->prefix("admin/dashboard")->grou
     //For Sale manager
     Route::get('/',[DashboardController::class,'index']);
     Route::get('/customers',[CustomerController::class,'index']);
+    Route::post('/customers',[CustomerController::class,'search']);
     // Route::get('/customer/pending/search',[SearchController::class,'search_pending_customer']);
     Route::get('/customer/detail/{id}',[ViewDetailController::class,'index']);
     Route::get('/pipeline',[PipeLineController::class,'index']);
@@ -65,14 +66,20 @@ Route::middleware(["auth"])->namespace("Admin")->prefix("admin/dashboard")->grou
     Route::get('/product/report',[ProductReportController::class,'product_report']);
     Route::post('/product/report',[ProductReportController::class,'search_report']);
     Route::get('/summary/product/sold',[SummaryProductSoldController::class,'summary_product_sold']);
+    Route::post('/summary/product/search',[SummaryProductSoldController::class,'summary_product_search']);
     Route::get('/summary/activities',[SummaryActivitiesController::class,'summary_activities']);   
     Route::post('/summary/activities',[SummaryActivitiesController::class,'search_summary_activities']);
     Route::get('/logout',[LogoutController::class,'logout']);
-    Route::get('/profile',[ProfileController::class,'profile']); 
+    Route::get('/profile',[ProfileController::class,'profile']);
+    
+    Route::get('/product/export',[ProductSoldReportController::class,'index']);
+    Route::get('/teamlist/export',[TeamListExportController::class,'index']);
 });
 
 Route::middleware(["auth"])->namespace("Admin")->prefix("admin")->group(function(){
       //For Sale person
+    Route::get('user/register',[RegisterController::class,'index']);
+    Route::post('user/register',[Registercontroller::class,'create']);
     Route::get('user/pipeline',[PipelIneSaleController::class,'index']);
     Route::post('user/pipeline',[PipelIneSaleController::class,'search_pipeline']);
     Route::get('user/activities',[ActivitiesSaleController::class,'index']);
@@ -99,6 +106,11 @@ Route::middleware(["auth"])->namespace("admin")->prefix("admin/panel")->group(fu
     Route::post('categories/edit/{id}',[CategoryController::class,'update_category']);
     Route::get('categories/delete/{id}',[CategoryController::class,'delete_category']);
 });
+
+// Route::middleware('auth')->namespace('admin/export')->prefix('admin/dashboard')->group(function(){
+//     Route::get('/product/export',[ProductSoldReportController::class,'index']);
+//     Route::resource('/teamlist/export',TeamListExportController::class);
+// });
 
 
 

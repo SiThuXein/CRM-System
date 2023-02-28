@@ -5,7 +5,7 @@
 
 @section("content")
 
-<div class="container-fluid pipeline bg-white" >
+<div class="container-fluid pipeline bg-white mt-5" >
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-4 mt-3">
@@ -47,6 +47,7 @@
                     <th>Action</td>
                 </tr>
                     @foreach($assign as $a)
+                    @if($a->customer->status == "Pending")
                        <tr class="row_2">
                             <td><i class="fa-thin fa-square"></i></td>
                             <td>{{ $a->id }}</td>
@@ -62,6 +63,7 @@
                             @endif
                             <td><a href="/admin/customer/detail/{{$a->customer->id}}"><button class="btn btn-sm btn-primary">View Datail</button></a></td>
                        </tr>
+                       @endif
                     @endforeach
                        </table>
         </div>

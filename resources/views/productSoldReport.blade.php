@@ -1,6 +1,6 @@
 @extends("layouts.master")
 @extends("layouts.nav")
-@section("title","Activities")
+@section("title","Report")
 @include("layouts.footer")
 
 @section("content")
@@ -17,7 +17,7 @@
 </div>
 @endif -->
 
-<div class="container-fluid pipeline bg-white" id="pipeline">
+<div class="container-fluid pipeline bg-white mt-5" id="pipeline">
     <div class="row mt-3">
         <div class="col-md-1"></div>
         <div class="col-md-10 mt-3 ">
@@ -39,25 +39,29 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                <label for="" class="fw-bold fs-6">Product</label><br>
                                <select name="product" id="" class="text-center">
                                    <option value="" active>All</option>
                                    @foreach($product as $p)
-                                        <option value="{{ $p->product_name }}" >{{ $p->name }}</option>
+                                        <option value="{{$p->id}}" >{{ $p->product_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-2"></div>
-                           <div class="col-md-1 mt-3">
+                           <div class="col-md-1 mt-4">
                                 <button type="submit" class="btn btn-info">Search</button>
                            </div>
-                           <div class="col-md-1 mt-3">
+                           <div class="col-md-1 mt-4">
                                 <button type="submit" class="btn btn-warning">Reset</button>
                            </div>
+                           <div class="col-md-2"></div>
+                           <div class="col-md-1 mt-3">
+                           <a href="/admin/dashboard/product/export"><img src="{{ asset('images/excel.png') }}" alt="Export Excel File" width="50px" height="50px"></a>
+                            </div>
                        </div>
                    </div>
                </form>
+              
            </div>
         </div>
     </div>
@@ -90,8 +94,8 @@
                             <td>{{ $a->user->username }}</td>
                             <td>{{ $a->assign_date }}</td>
                        </tr>
-                @endforeach
-                       </table>
+                @endforeach 
+            </table>
         </div>
         <div class="col-md-1"></div>
     </div>
@@ -99,7 +103,6 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            {{ $assign->links() }}
         </div>
     </div>
 

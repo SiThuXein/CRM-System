@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-primary">
-  <div class="container-fluid">
+
+<nav class="navbar navbar-expand-lg bg-primary" >
+  <div class="container-fluid" id="nav">
     @if(auth()->user()->role == "manager")
     <a class="navbar-brand" href="/admin/dashboard" id="dashboard">Dashboard</a>
     @endif
@@ -14,7 +15,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-      @auth
       @if(auth()->user()->role == "manager" || auth()->user()->role == "teller")
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,7 +43,7 @@
           </ul>
         </li>
         @endif
-      @endauth
+
       </ul>
     
 
